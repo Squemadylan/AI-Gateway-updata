@@ -1,9 +1,9 @@
 {
-  "version": "0.9.9",
-  "minVersion": "0.9.8",
-  "force": true,
+  "version": "0.9.8",
+  "minVersion": "0.9.6",
+  "force": false,
   "downloadUrl": "https://pan.quark.cn/s/8fd93162bcab",
-  "downloadName": "AI-Gateway-Windows-0.9.9.zip",
+  "downloadName": "AI-Gateway-Windows-0.9.8.zip",
   "publishedAt": "2026-11-18",
-  "notes": "临时：验证强制态运行中落闸"
+  "notes": "检查更新卡片文案精简 + 打开程序即检查；强制更新状态固化（独立闸门文件，重启仍生效，命中后停掉周期检查）；关闭按钮只收托盘不再杀服务；媒体实测入口移除（仅 LLM 转发）。"
 }
