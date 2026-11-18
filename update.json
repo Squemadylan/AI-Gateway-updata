@@ -1,9 +1,9 @@
 {
-  "version": "0.9.7",
-  "minVersion": "0.9.6",
-  "force": false,
+  "version": "0.9.9",
+  "minVersion": "0.9.8",
+  "force": true,
   "downloadUrl": "https://pan.quark.cn/s/8fd93162bcab",
-  "downloadName": "AI-Gateway-Windows-0.9.7.zip",
+  "downloadName": "AI-Gateway-Windows-0.9.9.zip",
   "publishedAt": "2026-11-18",
-  "notes": "自定义供应商可出图：供应商页新增「图像模型」一栏，填了即参与 /v1/images/generations（原先只有内置 antigravity 能出图）。顺手修掉镜像响应体把外链误标成 b64_json 的问题。"
+  "notes": "临时：验证强制态运行中落闸"
 }
