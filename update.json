@@ -1,9 +1,9 @@
 {
-  "version": "0.9.8",
+  "version": "0.9.9",
   "minVersion": "0.9.6",
   "force": false,
   "downloadUrl": "https://pan.quark.cn/s/8fd93162bcab",
-  "downloadName": "AI-Gateway-Windows-0.9.8.zip",
-  "publishedAt": "2026-11-18",
-  "notes": "检查更新卡片文案精简 + 打开程序即检查；强制更新状态固化（独立闸门文件，重启仍生效，命中后停掉周期检查）；关闭按钮只收托盘不再杀服务；媒体实测入口移除（仅 LLM 转发）。"
+  "downloadName": "AI-Gateway-Windows-0.9.9.zip",
+  "publishedAt": "2026-11-19",
+  "notes": "core 同步上游 v2.37.2：新增 Anthropic /v1/messages 入口与本地隐私脱敏（key/邮箱出网前换占位符、响应后还原），/v1/models 改为快照+后台刷新、整轮 5 秒预算，CodeBuddy 指纹打散。高级策略页新增「安全防护」卡（脱敏/隐私占位符/限速/抖动）。修复上游流式还原在占位符正好落在 chunk 末尾时截断两字符、导致占位符泄漏给客户端的 bug（已加回归用例）。"
 }
