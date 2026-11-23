@@ -1,9 +1,9 @@
 {
-  "version": "1.0.1",
+  "version": "1.0.2",
   "minVersion": "0.9.6",
   "force": false,
   "downloadUrl": "https://pan.quark.cn/s/8fd93162bcab",
-  "downloadName": "AI-Gateway-Windows-1.0.1.zip",
+  "downloadName": "AI-Gateway-Windows-1.0.2.zip",
   "publishedAt": "2026-11-23",
-  "notes": "备份包改为不加密：包内 secure/ 条目一律明文，解压后可直接用编辑器查看账号、设置、调用记录。前因是密文熵饱和导致 deflate 压不动（压缩比实测 1.00），一次备份 2.2 MB 里 97.5% 是加密后的调用记录；解成明文后压缩比降到 0.32，同一次备份从 2328 KB 缩到 773 KB。磁盘上的 secure/ 仍然加密，这一层没动。恢复明文包后会自动把 secure/ 重新加密（实测 170 条全变回 AGW1、磁盘 0 明文），不会留下明文凭证；旧版本生成的加密包仍可完整恢复（自带 master.key，同一密钥解得开）。顺带修正备份页文案：原先写「关掉调用记录包会小一半」但前端把参数写死 true、实际没有开关，现改为如实说明体积构成（调用记录占九成以上，其余只有几十 KB）。验证：server 单测 32/0（新增 BackupCodecTest 13 例），独立数据目录 + 真实 13 账号端到端跑通备份→登记→重启恢复→重新加密→对话冒烟全链路。"
+  "notes": "账号备份（账号保险柜）改为 gzip 压缩存储：13 个账号 19226 B → 7250 B（7.1 KB，-62%），字段一个不裁，跨机导入后直接能用。试过砍掉 accessToken（理由看起来成立：refreshToken 能换出新的），实测导入后一个账号都用不了——TraeAccount.parse 硬抛「凭证缺少 accessToken」，CodeBuddyProvider.parse 返回 null 报「凭证无法解析」，没有任何供应商实现「accessToken 为空就先去刷新」的分支。体积优化的前提是导入后直接能用，前提不成立就不叫优化，因此放弃裁字段只做压缩。这个结论用反向断言锁在单测里，下次再想「优化体积」会先撞到。落盘后缀改成 auto-*.json.gz / manual-*.json.gz；读文件按 gzip 魔数判断（用户会改扩展名），老的 .json 明文备份照样能读。前端导入用 DecompressionStream、导出用 CompressionStream，均为 WebView2 原生能力。下载时去掉 .gz 后缀，否则用户拿到的是「.gz 里装明文」。验证：server 单测 50/0（AccountPackTest 19 例）；两个独立数据目录 + 真实 13 账号跑通「源机备份 → 空数据目录跨机导入 → 启动网关 → 真实对话返回内容」全链路，不是只看接口返回 ok。第 13 页整目录备份（773 KB）不受影响，它是同机回滚用的。"
 }
