@@ -1,9 +1,9 @@
 {
-  "version": "0.9.9",
+  "version": "1.0.0",
   "minVersion": "0.9.6",
   "force": false,
   "downloadUrl": "https://pan.quark.cn/s/8fd93162bcab",
-  "downloadName": "AI-Gateway-Windows-0.9.9.zip",
-  "publishedAt": "2026-11-19",
-  "notes": "core 同步上游 v2.37.2：新增 Anthropic /v1/messages 入口与本地隐私脱敏（key/邮箱出网前换占位符、响应后还原），/v1/models 改为快照+后台刷新、整轮 5 秒预算，CodeBuddy 指纹打散。高级策略页新增「安全防护」卡（脱敏/隐私占位符/限速/抖动）。修复上游流式还原在占位符正好落在 chunk 末尾时截断两字符、导致占位符泄漏给客户端的 bug（已加回归用例）。"
+  "downloadName": "AI-Gateway-Windows-1.0.0.zip",
+  "publishedAt": "2026-11-23",
+  "notes": "core 同步上游 v2.38.2（Anthropic /v1/messages、本地隐私脱敏、/v1/models 快照、CodeBuddy 指纹打散）。新增侧栏第13页「备份与恢复」（备份落数据目录之外、恢复两段式在下次启动执行、恢复前自动留回滚包）。账号页新增「账号保险柜」：自动 auto-<时间> 落数据目录外（留10份）、手动 manual-<时间> 落安装目录（不轮转，只有你能删），备份文件本身就是导出文件可跨机导入。落盘改为批量合并（logs/usage/clientkey 200ms 一批，一次对话3写1删合并为最多1次提交）。新增 POST /ui/quit 让外壳正常退出（原先只能强杀，shutdown hook 全不跑）。安全收紧：CORS 白名单、GET /metrics 仅本机可读、局域网无 Key 收敛。新增 Prometheus 18 项指标（含6项存储指标）。修掉 iss 产出的版本号与打包脚本手工同步的坑，改为 __VER__ 注入。验证：core 897 / server 19 单测全绿，接口探针 114 请求 0 个500，13页巡检 0 异常，外壳 12/12。"
 }
