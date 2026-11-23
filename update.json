@@ -5,5 +5,5 @@
   "downloadUrl": "https://pan.quark.cn/s/8fd93162bcab",
   "downloadName": "AI-Gateway-Windows-1.0.2.zip",
   "publishedAt": "2026-11-23",
-  "notes": "账号备份（账号保险柜）改为 gzip 压缩存储：13 个账号 19226 B → 7250 B（7.1 KB，-62%），字段一个不裁，跨机导入后直接能用。试过砍掉 accessToken（理由看起来成立：refreshToken 能换出新的），实测导入后一个账号都用不了——TraeAccount.parse 硬抛「凭证缺少 accessToken」，CodeBuddyProvider.parse 返回 null 报「凭证无法解析」，没有任何供应商实现「accessToken 为空就先去刷新」的分支。体积优化的前提是导入后直接能用，前提不成立就不叫优化，因此放弃裁字段只做压缩。这个结论用反向断言锁在单测里，下次再想「优化体积」会先撞到。落盘后缀改成 auto-*.json.gz / manual-*.json.gz；读文件按 gzip 魔数判断（用户会改扩展名），老的 .json 明文备份照样能读。前端导入用 DecompressionStream、导出用 CompressionStream，均为 WebView2 原生能力。下载时去掉 .gz 后缀，否则用户拿到的是「.gz 里装明文」。验证：server 单测 50/0（AccountPackTest 19 例）；两个独立数据目录 + 真实 13 账号跑通「源机备份 → 空数据目录跨机导入 → 启动网关 → 真实对话返回内容」全链路，不是只看接口返回 ok。第 13 页整目录备份（773 KB）不受影响，它是同机回滚用的。"
+  "notes": "PC端反代软件——支持workbuddy、loomy、trae、ChatGPT、小浣熊、Antigravity六家，以及任意自定义接口的API~玩转LLM白嫖不是梦！"
 }
