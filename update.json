@@ -1,7 +1,7 @@
 {
   "version": "1.0.2",
   "minVersion": "0.9.6",
-  "force": false,
+  "force": true,
   "downloadUrl": "https://pan.quark.cn/s/8fd93162bcab",
   "downloadName": "AI-Gateway-Windows-1.0.2.zip",
   "publishedAt": "2026-11-23",
